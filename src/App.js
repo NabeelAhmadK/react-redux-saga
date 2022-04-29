@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import '@assets/scss/app.scss';
+import Home from '@pages/home';
+import { useSelector } from 'react-redux';
 
-function App() {
+const App = () => {
+
+  const { name, age } = useSelector(state => state.user)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container text-center pt-4'>
+      <h3>React with Redux-Saga</h3>
+
+      <div className='mt-5 d-flex flex-column align-items-start'>
+        {name && <p className='m-0'>Name: <span className='fw-bold'>{name}</span></p>}
+        {age && <p className='m-0'>Age: <span className='fw-bold'>{age}</span></p>}
+      </div>
+      <Home />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
